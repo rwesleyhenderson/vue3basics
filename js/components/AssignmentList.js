@@ -1,11 +1,12 @@
 import Assignment from "./Assignment.js";
 import AssignmentTags from "./AssignmentTags.js";
+import Panel from "./Panel.js";
 
 export default {
-    components: { Assignment, AssignmentTags },
+    components: { Assignment, AssignmentTags, Panel },
 
     template: `
-        <section v-show="assignments.length" class="w-60">
+        <Panel v-show="assignments.length" class="w-60">
             <div class="flex justify-between items-start">   
                 <h2 class="font-bold mb-2">
                     {{ title }}
@@ -20,7 +21,7 @@ export default {
                     v-model:currentTag="currentTag"
                 />
 
-                <ul class="border border-gray-600 divide-y divide-gray-600 mt-4">
+                <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">
                     <assignment
                         v-for="assignment in filteredAssignments"
                         :key="assignment.id"
@@ -29,7 +30,7 @@ export default {
                 </ul>
 
                 <slot></slot>
-            </section>
+            </Panel>
     `,
 
     props: {
